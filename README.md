@@ -1,5 +1,7 @@
 # bidnamic-challenge-api
 
+# view frontend - https://bidnamic-challenge.netlify.app/
+
 ## Full Stack Django Engineering Challenge
 
 
