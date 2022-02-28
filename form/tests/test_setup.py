@@ -5,7 +5,8 @@ from form.models import Form
 
 # Create your tests here.
 class TestSetup(APITestCase):
-
+    # this function name should be camel case by convention
+    # in APITestCase
     def setUp(self):
         self.register_url = reverse('users:user-list')
         self.login_url = reverse('login')
@@ -30,5 +31,7 @@ class TestSetup(APITestCase):
 
         return super().setUp()
 
+    # this function name should be camel case by convention
+    # in APITestCase
     def tearDown(self):
         return super().tearDown()

@@ -23,6 +23,7 @@ class ListView(APIView):
         # copy request.data to allow mutability
         query_dict = request.data.copy()
         
+        # validate date of birth submitted 
         date = query_dict['dob']
         birth_date = datetime.strptime(date, '%d/%m/%Y')
         age = (datetime.now() - birth_date).days/365
@@ -47,18 +48,26 @@ class DetailView(APIView):
         db_data = get_object_or_404(Form, id=pk)
         return db_data
     
-    def get(self, request, id):
-        user_details = self.get_object(id)
+    def get(self, request, pk):
+        user_details = self.get_object(pk)
         serializer = FormDetailsSerializer(user_details)
         return Response(serializer.data)
     
     def put(self, request, pk, format=None, form=None):
         query_dict = request.data.copy()
-        query_dict['user'] = request.user.id
         user_details = self.get_object(pk)
+
+        # validate date of birth submitted
+        date = query_dict['dob']
+        birth_date = datetime.strptime(date, '%d/%m/%Y')
+        age = (datetime.now() - birth_date).days/365
+
+        query_dict['user'] = request.user.id
         serializer = FormDetailsSerializer(user_details, data=query_dict)
 
         if serializer.is_valid():
+            if age < 18:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             serializer.save()
             return Response(serializer.data)
         print(serializer.errors)
