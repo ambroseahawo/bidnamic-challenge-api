@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://bidnamic-challenge-api.up.railway.app"]
 
 
 # Application definition
@@ -63,8 +63,7 @@ CORS_ALLOWED_ORIGINS = [
     # "https://example.com",
     # "https://sub.example.com",
     "http://localhost:3000",
-    "https://bidnamic-challenge.netlify.app",
-    "https://bidnamic-challenge-api.up.railway.app",
+    "https://bidnamic-challenge.netlify.app"
     # "http://127.0.0.1:9000",
 ]
 
