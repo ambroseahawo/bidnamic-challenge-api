@@ -64,6 +64,7 @@ CORS_ALLOWED_ORIGINS = [
     # "https://sub.example.com",
     "http://localhost:3000",
     "https://bidnamic-challenge.netlify.app",
+    "bidnamic-challenge-api.up.railway.app",
     # "http://127.0.0.1:9000",
 ]
 
